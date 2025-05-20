@@ -80,9 +80,17 @@ jobs:
           context: http-server
           tags: ${{ secrets.DOCKER_USERNAME }}/tp-devops-httpd:latest
           push: true
-  evaluate-performances:
-    steps:
-      - name: evaluate on sonarflow
-        run: mvn -B verify sonar:sonar -Dsonar.projectKey=benoit-bassompierre_tp-devops-correction-docker -Dsonar.organization=benoit-bassompierre -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=43dc2325fb9e3051983626b6bab7b321df8fde71  --file ./simple-api/pom.xml
+evaluate-performances:
+  runs-on: ubuntu-24.04
+  needs: test-backend
+  steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
 
-        
+    - name: Evaluate on SonarCloud
+      run: mvn -B verify sonar:sonar \
+        -Dsonar.projectKey=benoit-bassompierre_tp-devops-correction-docker \
+        -Dsonar.organization=benoit-bassompierre \
+        -Dsonar.host.url=https://sonarcloud.io \
+        -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+      working-directory: simple-api
