@@ -63,9 +63,11 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Evaluate on SonarCloud
-        run: mvn -B verify sonar:sonar \
-          -Dsonar.projectKey=benoit-bassompierre_tp-devops-correction-docker \
-          -Dsonar.organization=benoit-bassompierre \
-          -Dsonar.host.url=https://sonarcloud.io \
-          -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+        run: |
+          mvn -B verify sonar:sonar \
+            -Dsonar.projectKey=benoit-bassompierre_tp-devops-correction-docker \
+            -Dsonar.organization=benoit-bassompierre \
+            -Dsonar.host.url=https://sonarcloud.io \
+            -Dsonar.login=${{ secrets.SONAR_TOKEN }}
         working-directory: simple-api
+
