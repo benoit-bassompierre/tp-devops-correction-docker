@@ -1,0 +1,10 @@
+- name: Run PostgreSQL container
+  docker_container:
+    name: postgres_db
+    image: benoitbassompierre/tp-devops-database
+    env:
+      POSTGRES_PASSWORD: pwd
+    ports:
+      - "5432:5432"
+    networks:
+      - name: my_app_net

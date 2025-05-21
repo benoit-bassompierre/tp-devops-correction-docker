@@ -1,0 +1,9 @@
+---
+- name: Run reverse proxy container
+  docker_container:
+    name: proxy
+    image: benoitbassompierre/tp-devops-httpd
+    ports:
+      - "80:80"
+    networks:
+      - name: my_app_net
