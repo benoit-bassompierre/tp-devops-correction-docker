@@ -16,6 +16,11 @@ jobs:
         with:
           distribution: 'temurin'
           java-version: '21'
+          
+      - name: Set up Maven
+        uses: s4u/setup-maven-action@v1.10.0
+        with:
+        maven-version: '3.9.6'
 
       - name: Build and test with Maven
         run: mvn clean verify
