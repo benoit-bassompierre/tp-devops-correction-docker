@@ -3,6 +3,7 @@
   docker_container:
     name: proxy
     image: benoitbassompierre/tp-devops-httpd
+        pull: yes
     ports:
       - "80:80"
     networks:

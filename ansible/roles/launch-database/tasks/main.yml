@@ -2,6 +2,7 @@
   docker_container:
     name: postgres_db
     image: benoitbassompierre/tp-devops-database
+    pull: yes
     env:
       POSTGRES_PASSWORD: pwd
     ports:

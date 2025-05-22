@@ -3,6 +3,7 @@
   docker_container:
     name: simple-api
     image: benoitbassompierre/tp-devops-simple-api
+    pull: yes
     ports:
       - "5000:5000"
     networks:
